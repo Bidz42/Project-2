@@ -1,2 +1,2 @@
-# Week-2-Project
+# Project-2
 Muhammed and Soufiane
