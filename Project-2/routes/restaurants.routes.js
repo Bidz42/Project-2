@@ -13,13 +13,5 @@ router.get('/restaurants', isLoggedIn, (req, res) => {
     }
 });
 
-router.get('/restaurant', isLoggedIn, (req, res) => {
-    if(req.session.user){
-      res.render('restaurants/restaurant')
-    }
-    else {
-      res.render('auth/login')
-    }
-});
 
 module.exports = router;
