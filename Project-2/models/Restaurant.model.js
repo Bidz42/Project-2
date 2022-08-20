@@ -11,15 +11,8 @@ const restaurantSchema = new Schema({
     cuisine: {
         type: String,
         required: [true]
-    },
-    password: {
-        type: String,
-        required: [true, "Must include password"]
-    },
-    picture: {
-        type: String,
-    }
-    }, {minimize: false});
+    }}
+    , {minimize: false});
 
 const Restaurant = model('Restaurant', restaurantSchema);
 

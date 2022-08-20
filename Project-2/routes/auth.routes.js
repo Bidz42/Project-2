@@ -5,7 +5,6 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/checker');
 
 /* GET home page */
 router.get('/signup', isLoggedOut, (req, res) => {
-    console.log('req session', req.session);
     res.render('auth/signup')
 });
 
@@ -33,35 +32,35 @@ router.get('/login', isLoggedOut, (req, res, next) => {
 
 router.post('/login', isLoggedOut, (req, res, next) => {
   const { email, password } = req.body
-  let theUser
 
-  User.findOne({email: email})
+  if (!email || !password){
+    res.render('auth/login', { errorMessage: 'Please enter data in all fields. '});
+    return; 
+    }
+
+    User.findOne({ email: email })
     .then(user => {
-      theUser = user
-      if (!user) {
-        res.send('email not found')
-        throw('email not found')
-      }
-      return bcrypt.compare(password, user.password)
+        if(!user) {
+            res.render('auth/login', { errorMessage: 'This email has not been registered.'});
+            return;
+        }
+        else if (bcrypt.compareSync(password, user.password)) {
+            req.session.currentUser = user;
+            res.redirect('/restaurants/restaurants');
+        }
+        else {
+            res.render('auth/login', { errorMessage: 'Incorrect password.' });
+            return;
+        }
     })
-    .then(passwordCorrect => {
-      if(!passwordCorrect) {
-        res.send('password incorrect')
-        return
-      }
-      req.session.user = theUser
-      res.redirect('/restaurants/restaurants')
-    })
-    .catch(e => {
-      next(e)
-    })
-})
+    .catch(err => console.log(err));
+});
 
-router.get('/logout', isLoggedIn, (req, res, next) => {
-  res.clearCookie('connect.sid');
-  req.session.destroy(() =>{
-    res.redirect('/auth/login')
-  })
-})
+router.get('/logout', isLoggedIn, (req, res) => {
+    res.clearCookie('connect.sid');
+    req.session.destroy(() =>{
+      res.redirect('/auth/login')
+    })
+});
 
 module.exports = router;
