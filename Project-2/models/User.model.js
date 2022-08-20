@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const {isEmail} = require('validator');
 
 const UserSchema = new Schema({
   name: {
@@ -12,7 +11,6 @@ const UserSchema = new Schema({
     unique: true,
     required: [true, "Must include email"],
     index: true,
-    validate: [isEmail, "Invalid email"]
   },
   password: {
     type: String,
