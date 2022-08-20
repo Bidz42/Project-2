@@ -1,0 +1,17 @@
+<h2>Edit a restaurant!</h2>
+
+<form action="/restaurants/{{restaurants._id}}/edit" method="POST">
+
+    <label for="user"> User:</label>
+    <input type="text" name="user" value="{{restaurants.user}}">
+<br>
+    <label for="name"> Name:</label>
+    <input type="text" name="name" value="{{restaurants.name}}">
+<br>
+    <label for="cuisine"> Cuisine:</label>
+    <input type="text" name="cuisine" value="{{restaurants.cuisine}}">
+<br>
+    <button type="submit">Edit!</button>
+<br>
+    <a href="/restaurants/restaurants">Back to the restaurants?</a>
+</form>

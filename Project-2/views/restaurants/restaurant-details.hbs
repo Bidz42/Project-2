@@ -1,0 +1,11 @@
+<h2>Restaurants</h2>
+
+<h4>User:{{restaurants.user}}</h4><hr />
+<p>Name:{{restaurants.name}}</p><hr />
+<p>Cuisine: {{restaurants.cuisine}}</p><hr />
+
+<form action="/restaurants/{{restaurants._id}}/delete" method="POST">
+<button type="submit">Delete!!!</button>
+</form>
+
+<a href="/restaurants/{{restaurants._id}}/edit">Edit!</a>

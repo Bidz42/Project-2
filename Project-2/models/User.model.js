@@ -16,10 +16,10 @@ const UserSchema = new Schema({
     type: String,
     required: [true, "Must include password"]
   },
-  picture: {
+  img: {
     type: String,
-  }
-}, {minimize: false});
+  }},
+  {minimize: false});
 
 const User = model('User', UserSchema);
 

@@ -1,0 +1,13 @@
+
+<form action="/{{_id}}/edit" method="POST">
+    <label for="name" ></label>
+    <input type="text" name="user" value="{{review.user.name}}"  required/>
+
+    <label for="comment" ></label>
+    <input type="textarea" name="comment" value="{{review.comment}} "  required/>
+
+    <label for="star" ></label>
+    <input type="text" name="star" value="{{review.star}}"  required/>
+
+    <button type="submit">Edit</button>
+</form>
