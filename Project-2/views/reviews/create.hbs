@@ -1,0 +1,16 @@
+<form action="/{{id}}/create" method="POST">
+    <label for="name" ></label>
+    <input type="text" name="user" placeholder="Name"  required/>
+
+    <label for="comment" ></label>
+    <input type="textarea" name="comment" placeholder="Write Review Here"  required/>
+
+    <label for="star" ></label>
+    <input type="text" name="star" placeholder="Stars"  required/>
+
+    <button type="submit">Send</button>
+</form>
+
+{{#if errorMessage}}
+    <h1>{{errorMessage}}</h1>
+{{/if}}

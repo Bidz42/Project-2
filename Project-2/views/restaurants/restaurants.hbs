@@ -1,0 +1,15 @@
+<h2>List of restaurants</h2>
+
+<ul>
+  {{#each restaurants}}
+    <li>
+      <a href="/restaurants/{{_id}}"><h4>{{name}}</h4></a>
+      <br>
+      <p>Cuisine: "{{cuisine}}"</p>
+    </li>
+    <a href="/restaurants/{{restaurants._id}}/edit">Edit!</a>
+    <a href="/restaurants/{{restaurants._id}}/delete">Delete!</a>
+  {{/each}}
+</ul>
+
+<a href="/">Back to homepage</a>

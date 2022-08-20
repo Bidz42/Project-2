@@ -1,0 +1,10 @@
+{{#each comments}}
+    <div class="review-item">
+
+        <h1>{{this.user.name}}</h1>
+        <p>{{this.comment}}</p>
+        <span>Stars:{{this.star}}</span>
+        <a href="{{_id}}/edit">Edit</a>
+
+    </div>  
+{{/each}}
